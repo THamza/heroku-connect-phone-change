@@ -24,6 +24,7 @@ app.post('/update', function(req, res) {
                     done();
                     if (err) {
                         res.status(400).json({error: err.message});
+                        console.log(err);
                     }
                     else {
                         // this will still cause jquery to display 'Record updated!'
@@ -57,7 +58,8 @@ app.post('/create', function(req, res) {
                         res.json(result);
                     }
                     else {
-                          conn.query('INSERT INTO salesforce.Contact (LastName, Email) VALUES ($1, $1)',
+                        console.log(err);
+                        conn.query('INSERT INTO salesforce.Contact (LastName, Email) VALUES ($1, $1)',
                         [req.body.email.trim()],
                           function(err, result) {
                             done();
@@ -65,6 +67,7 @@ app.post('/create', function(req, res) {
                                 res.json(result);
                             }
                             else {
+                                console.log(err);
                                 res.status(400).json({error: err.message});
                                 
                             }

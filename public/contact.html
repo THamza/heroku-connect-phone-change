@@ -46,12 +46,13 @@
                             $("#subject").val("");
                             $("#description").val("");
                             $("#email").val("");
-                            $("#messageMessage").text("Record Created!");
+                            $("#messageMessage").text("Message Sent!");
                             $("#message").show();
                         },
                         error: function(err) {
                             errorMessage.text(err.responseJSON.error);
                             error.show();
+                            console.log(err);
                         }
                     })
                 }
