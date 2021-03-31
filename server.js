@@ -24,7 +24,6 @@ app.post('/update', function(req, res) {
                     done();
                     if (err) {
                         res.status(400).json({error: err.message});
-                        console.log(err);
                     }
                     else {
                         // this will still cause jquery to display 'Record updated!'
@@ -41,7 +40,6 @@ app.post('/update', function(req, res) {
         );
     });
 });
-
 // app.get('/contact', function(req, res) {
 //     let lastName = req.query.lastname;
 //     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
