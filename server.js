@@ -42,71 +42,28 @@ app.post('/update', function(req, res) {
     });
 });
 
-app.post('/create', function(req, res) {
-    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
-        // watch for any connect issues
-        if (err) console.log(err);
-        conn.query(
-            'INSERT INTO salesforce.Task (Subject,Description) VALUES ($1, $2)',
-            [req.body.subject.trim(), req.body.description.trim()],
-            function(err, result) {
-                if (err != null || result.rowCount == 0) {
-                  conn.query('SELECT FirstName FROM salesforce.Contact WHERE Email = $1',
-                  [req.body.email.trim()],
-                  function(err, result) {
-                    if (!err) {
-                        res.json(result);
-                    }
-                    else {
-                        console.log(err);
-                        conn.query('INSERT INTO salesforce.Contact (LastName, Email) VALUES ($1, $1)',
-                        [req.body.email.trim()],
-                          function(err, result) {
-                            done();
-                            if (!err) {
-                                res.json(result);
-                            }
-                            else {
-                                console.log(err);
-                                res.status(400).json({error: err.message});
-                                
-                            }
-                          });
-                        
-                    }
-                  });
-                }
-                else {
-                    done();
-                    res.json(result);
-                }
-            }
-        );
-    });
-});
-
-app.get('/contact', function(req, res) {
-    let lastName = req.query.lastname;
-    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
-        // watch for any connect issues
-        if (err) console.log(err);
-        conn.query(
-            'SELECT firstName, email, phone FROM salesforce.Contact WHERE lastName=$1',
-            [lastName],
-            function(err, result) {
-                if (err != null || result.rowCount == 0) {
-                    res.json(result);
+// app.get('/contact', function(req, res) {
+//     let lastName = req.query.lastname;
+//     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+//         // watch for any connect issues
+//         if (err) console.log(err);
+//         conn.query(
+//             'SELECT firstName, email, phone FROM salesforce.Contact WHERE lastName=$1',
+//             [lastName],
+//             function(err, result) {
+//                 if (err != null || result.rowCount == 0) {
+//                     res.json(result);
                   
-                }
-                else {
-                    res.status(400).json({error: err.message});
-                    done();
-                    res.json(result);
-                }
-            }
-        );
-    });
-});
+//                 }
+//                 else {
+//                     res.status(400).json({error: err.message});
+//                     done();
+//                     res.json(result);
+//                 }
+//             }
+//         );
+//     });
+// });
 
 
 app.listen(app.get('port'), function () {

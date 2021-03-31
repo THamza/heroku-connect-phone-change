@@ -62,12 +62,12 @@
         });
 
     </script>
-    <script>
+ <!--    <script>
         $('#loadData').click(function(){
             console.log('button clicked');
             $.ajax({
                         url: 'contact?lastname=' + ("#lastName").val(""),
-                        method: get,
+                        method: "get",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {
@@ -84,7 +84,7 @@
                         }
                     })
         });
-    </script>
+    </script> -->
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -130,7 +130,7 @@
                         <span id="errorMessage"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">Update Phone Number</button>
-                    <button type="button" id='loadData' class="btn btn-warning"> Load </button>
+                 <!--    <button type="button" id='loadData' class="btn btn-warning"> Load </button> -->
                 </div>
 
             </div>
