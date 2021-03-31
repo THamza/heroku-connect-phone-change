@@ -85,8 +85,8 @@ app.post('/create', function(req, res) {
     });
 });
 
-app.get('/get-contact', function(req, res) {
-    let lastName = req.query.lastName;
+app.get('/contact', function(req, res) {
+    let lastName = req.query.lastname;
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);

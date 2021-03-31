@@ -66,11 +66,8 @@
         $('#loadData').click(function(){
             console.log('button clicked');
             $.ajax({
-                        url: 'getContact?lastName=' + ("#lastName").val(""),
+                        url: 'contact?lastname=' + ("#lastName").val(""),
                         method: get,
-                        data: JSON.stringify({
-                            lastName: lastName
-                        }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {
@@ -106,12 +103,12 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="For verification" >
-                    </div>
-                    <div class="form-group">
                         <label for="lastName">Last Name</label>
                         <input type="text" class="form-control" id="lastName" placeholder="For verification" >
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="For verification" >
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -133,9 +130,9 @@
                         <span id="errorMessage"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">Update Phone Number</button>
+                    <button id='loadData' class="btn btn-warning"> Load </button>
                 </div>
 
-                    <button id='loadData' class="btn btn-warning"> Load </button>
             </div>
         </form>
     </div>
