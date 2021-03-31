@@ -28,10 +28,10 @@
                 var email = $("#email").val();
                 var phone = $("#phone").val();
 
-                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0) {
-                    errorMessage.text("All of the fields are required.");
-                    error.show();
-                }
+                // if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0) {
+                //     errorMessage.text("All of the fields are required.");
+                //     error.show();
+                // }
                 else {
                     $.ajax({
                         url: event.target.action,
@@ -130,7 +130,7 @@
                         <span id="errorMessage"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">Update Phone Number</button>
-                 <!--    <button type="button" id='loadData' class="btn btn-warning"> Load </button> -->
+                    <button type="button" id='loadData' class="btn btn-warning"> Load </button>
                 </div>
 
             </div>
