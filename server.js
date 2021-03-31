@@ -53,19 +53,24 @@ app.post('/create', function(req, res) {
                   conn.query('SELECT FirstName FROM salesforce.Contact WHERE Email = $1',
                   [req.body.email.trim()],
                   function(err, result) {
-                    if (err != null || result.rowCount == 0) {
-                        conn.query('INSERT INTO salesforce.Contact (LastName, Email) VALUES ($1, $1)',
+                    if (!err) {
+                        res.json(result);
+                    }
+                    else {
+                          conn.query('INSERT INTO salesforce.Contact (LastName, Email) VALUES ($1, $1)',
                         [req.body.email.trim()],
-                        if (err != null || result.rowCount == 0) {
-                        done();
-                        if (err) {
-                            res.status(400).json({error: err.message});
-                        }
-                        else {
-                            // this will still cause jquery to display 'Record updated!'
-                            // eventhough it was inserted
-                            res.json(result);
-                        }
+                          function(err, result) {
+                            done();
+                            if (!err) {
+                                res.json(result);
+                            }
+                            else {
+                                res.status(400).json({error: err.message});
+                                
+                            }
+                          });
+                        
+                    }
                   });
                 }
                 else {
