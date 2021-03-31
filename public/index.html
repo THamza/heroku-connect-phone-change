@@ -66,7 +66,7 @@
         $('#loadData').click(function(){
             console.log('button clicked');
             $.ajax({
-                        url: 'contact?lastname=' + ("#lastName").val(""),
+                        url: '/contact?lastname=' + ("#lastName").val(""),
                         method: "get",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
