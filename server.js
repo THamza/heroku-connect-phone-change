@@ -46,7 +46,7 @@ app.get('/contact', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'SELECT firstName, email, phone FROM salesforce.Contact WHERE lastName=$1',
+            'SELECT firstName, email, phone FROM salesforce.Contact',
             // 'SELECT firstName, email, phone FROM salesforce.Contact WHERE lastName=$1',
             // [lastName],
             function(err, result) {
