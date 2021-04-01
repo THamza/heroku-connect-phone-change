@@ -1,3 +1,5 @@
+//you create a postgres sql in your heroky dino, you build your app and connect it to the heroku databse and then you connect to sfdc to synchronise the databases. for instance we can fill this custom form buit in html css and nodejs as a backend to create a contact directly in the org
+//and since we can use powerful tools like we can do more complicated statements rather than queries. for example this app replicates the upsert operation, if the contact already exists, it updates it by matching email addresses
 var express = require('express');
 var bodyParser = require('body-parser');
 var pg = require('pg');
