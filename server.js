@@ -14,7 +14,7 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE salesforce.Contact SET Phone = $1, MobilePhone = $1, Email = $4, FirstName = $2 WHERE LOWER(Email) = LOWER($4)',
+            'UPDATE salesforce.Contact SET Phone = $1, MobilePhone = $1, FirstName = $2, LastName = $3 WHERE LOWER(Email) = LOWER($4)',
             [req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
@@ -22,6 +22,8 @@ app.post('/update', function(req, res) {
                   [req.body.phone.trim(), req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
                   function(err, result) {
                     done();
+                    console.log(err);                    
+                    console.log(result);
                     if (err) {
                         res.status(400).json({error: err.message});
                     }
